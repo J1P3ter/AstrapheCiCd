@@ -5,7 +5,7 @@ WORKDIR /app
 
 ARG FILE_DIRECTORY
 
-COPY $FILE_DIRECTORY /app
+COPY ${FILE_DIRECTORY} /app
 
 RUN gradle clean bootJar
 
