@@ -1,7 +1,7 @@
-# build에서 사용할 이미지
-FROM gradle:8.10.1-jdk17 AS build
+FROM openjdk:17-ea-11-jdk-slim
 VOLUME /tmp
-ARG FILE_DIRECTORY
-ARG JAR_FILE=${FILE_DIRECTORY}/build/libs/*jar
+#ARG FILE_DIRECTORY
+#ARG JAR_FILE=${FILE_DIRECTORY}/build/libs/*SNAPSHOT.jar
+ARG JAR_FILE=build/libs/*SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
