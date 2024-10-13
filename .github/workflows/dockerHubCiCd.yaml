@@ -47,9 +47,11 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - run: pwd
+
       # Docker 이미지 빌드
       - name: Build Docker image
-        run: docker compose -f ../../docker-compose.yaml up
+        run: docker compose -f ./docker-compose.yaml up
 
       # Docker Hub에 이미지 푸시
       - name: Push Docker image to Docker Hub
