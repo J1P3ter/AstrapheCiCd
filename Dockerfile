@@ -13,5 +13,5 @@ RUN gradle clean bootJar
 
 FROM openjdk:17-jdk-slim
 ARG FILE_DIRECTORY
-COPY --from=build /app${FILE_DIRECTORY}/build/libs/*SNAPSHOT.jar ./app.jar
+COPY --from=build /app$FILE_DIRECTORY/build/libs/*SNAPSHOT.jar ./app.jar
 CMD ["java", "-jar", "app.jar"]
