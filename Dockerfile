@@ -5,10 +5,10 @@ FROM gradle:8.10.1-jdk17 AS build
 WORKDIR /app
 
 # Set variables for building
-#ARG FILE_DIRECTORY
+ARG FILE_DIRECTORY
 
-#COPY $FILE_DIRECTORY /app
-COPY . .
+COPY $FILE_DIRECTORY /app
+#COPY . .
 
 RUN gradle clean bootJar
 
