@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.j1p3ter.productserver.company.ProductTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-10-08T02:57:38" hostname="LAPTOP-1LOBNFIT" time="2.039">
+  <properties/>
+  <testcase name="Delete Product Test" classname="com.j1p3ter.productserver.company.ProductTest" time="0.205"/>
+  <testcase name="Create Product Test" classname="com.j1p3ter.productserver.company.ProductTest" time="0.038"/>
+  <testcase name="Search Product Test - Product Name" classname="com.j1p3ter.productserver.company.ProductTest" time="1.53"/>
+  <testcase name="Get Product Info Test" classname="com.j1p3ter.productserver.company.ProductTest" time="0.041"/>
+  <testcase name="Search Product Test - Company Name" classname="com.j1p3ter.productserver.company.ProductTest" time="0.107"/>
+  <testcase name="Create Product Fail Test - Different owner" classname="com.j1p3ter.productserver.company.ProductTest" time="0.048"/>
+  <testcase name="Update Product Info Test" classname="com.j1p3ter.productserver.company.ProductTest" time="0.042"/>
+  <system-out><![CDATA[2024-10-08T11:57:38.854+09:00  INFO 27352 --- [product-server] [    Test worker] [                                                 ] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.j1p3ter.productserver.company.ProductTest]: ProductTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-10-08T11:57:38.863+09:00  INFO 27352 --- [product-server] [    Test worker] [                                                 ] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.j1p3ter.productserver.ProductServerApplication for test class com.j1p3ter.productserver.company.ProductTest
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.company.Company */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_companies (address, company_name, created_at, created_by, deleted_at, deleted_by, description, is_deleted, updated_at, updated_by, user_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m company_id
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        c1_0.category_code,
+        c1_0.category_name 
+    ?[34mfrom?[0m
+        tb_categories c1_0 
+    ?[34mwhere?[0m
+        c1_0.category_code=?
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.Product */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_products (category_code, company_id, created_at, created_by, deleted_at, deleted_by, description, description_image_url, discounted_price, is_deleted, is_hidden, is_soldout, original_price, product_image_url, product_name, rate, sale_end_time, sale_start_time, stock, updated_at, updated_by) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m product_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.ProductOption */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_product_options (option_name, option_price, option_value, product_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?) 
+    ?[34mreturning?[0m option_id
+?[35m[Hibernate]?[0m 
+    /* ?[34mupdate?[0m
+        ?[34mfor?[0m com.j1p3ter.productserver.domain.product.Product */?[34mupdate?[0m tb_products 
+    ?[34mset?[0m
+        category_code=?,
+        company_id=?,
+        created_by=?,
+        deleted_at=?,
+        deleted_by=?,
+        description=?,
+        description_image_url=?,
+        discounted_price=?,
+        is_deleted=?,
+        is_hidden=?,
+        is_soldout=?,
+        original_price=?,
+        product_image_url=?,
+        product_name=?,
+        rate=?,
+        sale_end_time=?,
+        sale_start_time=?,
+        stock=?,
+        updated_at=?,
+        updated_by=? 
+    ?[34mwhere?[0m
+        product_id=?
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        p1_0.product_id,
+        p1_0.category_code,
+        c1_0.category_code,
+        c1_0.category_name,
+        p1_0.company_id,
+        c2_0.company_id,
+        c2_0.address,
+        c2_0.company_name,
+        c2_0.created_at,
+        c2_0.created_by,
+        c2_0.deleted_at,
+        c2_0.deleted_by,
+        c2_0.description,
+        c2_0.is_deleted,
+        c2_0.updated_at,
+        c2_0.updated_by,
+        c2_0.user_id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.deleted_at,
+        p1_0.deleted_by,
+        p1_0.description,
+        p1_0.description_image_url,
+        p1_0.discounted_price,
+        p1_0.is_deleted,
+        p1_0.is_hidden,
+        p1_0.is_soldout,
+        p1_0.original_price,
+        p1_0.product_image_url,
+        p1_0.product_name,
+        p1_0.rate,
+        p1_0.sale_end_time,
+        p1_0.sale_start_time,
+        p1_0.stock,
+        p1_0.updated_at,
+        p1_0.updated_by 
+    ?[34mfrom?[0m
+        tb_products p1_0 
+    ?[34mjoin?[0m
+        tb_categories c1_0 
+            ?[34mon?[0m c1_0.category_code=p1_0.category_code 
+    ?[34mjoin?[0m
+        tb_companies c2_0 
+            ?[34mon?[0m c2_0.company_id=p1_0.company_id 
+            ?[34mand?[0m (c2_0.is_deleted ?[34mis?[0m ?[34mfalse?[0m) 
+    ?[34mwhere?[0m
+        p1_0.product_id=? 
+        ?[34mand?[0m (
+            p1_0.is_deleted ?[34mis?[0m ?[34mfalse?[0m
+        )
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.company.Company */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_companies (address, company_name, created_at, created_by, deleted_at, deleted_by, description, is_deleted, updated_at, updated_by, user_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m company_id
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        c1_0.category_code,
+        c1_0.category_name 
+    ?[34mfrom?[0m
+        tb_categories c1_0 
+    ?[34mwhere?[0m
+        c1_0.category_code=?
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.Product */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_products (category_code, company_id, created_at, created_by, deleted_at, deleted_by, description, description_image_url, discounted_price, is_deleted, is_hidden, is_soldout, original_price, product_image_url, product_name, rate, sale_end_time, sale_start_time, stock, updated_at, updated_by) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m product_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.ProductOption */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_product_options (option_name, option_price, option_value, product_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?) 
+    ?[34mreturning?[0m option_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.company.Company */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_companies (address, company_name, created_at, created_by, deleted_at, deleted_by, description, is_deleted, updated_at, updated_by, user_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m company_id
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        c1_0.category_code,
+        c1_0.category_name 
+    ?[34mfrom?[0m
+        tb_categories c1_0 
+    ?[34mwhere?[0m
+        c1_0.category_code=?
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.Product */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_products (category_code, company_id, created_at, created_by, deleted_at, deleted_by, description, description_image_url, discounted_price, is_deleted, is_hidden, is_soldout, original_price, product_image_url, product_name, rate, sale_end_time, sale_start_time, stock, updated_at, updated_by) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m product_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.ProductOption */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_product_options (option_name, option_price, option_value, product_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?) 
+    ?[34mreturning?[0m option_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.company.Company */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_companies (address, company_name, created_at, created_by, deleted_at, deleted_by, description, is_deleted, updated_at, updated_by, user_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m company_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.Product */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_products (category_code, company_id, created_at, created_by, deleted_at, deleted_by, description, description_image_url, discounted_price, is_deleted, is_hidden, is_soldout, original_price, product_image_url, product_name, rate, sale_end_time, sale_start_time, stock, updated_at, updated_by) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m product_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.ProductOption */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_product_options (option_name, option_price, option_value, product_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?) 
+    ?[34mreturning?[0m option_id
+?[35m[Hibernate]?[0m 
+    /* ?[34mselect?[0m
+        ?[34mdistinct?[0m product 
+    ?[34mfrom?[0m
+        Product product 
+    ?[34mwhere?[0m
+        product.isDeleted = ?1 
+        ?[34mand?[0m product.productName ?[34mlike?[0m ?2 ?[34mescape?[0m ?[36m'!'?[0m 
+    ?[34morder?[0m ?[34mby?[0m
+        product.createdAt desc */ ?[34mselect?[0m
+            ?[34mdistinct?[0m p1_0.product_id,
+            p1_0.category_code,
+            p1_0.company_id,
+            p1_0.created_at,
+            p1_0.created_by,
+            p1_0.deleted_at,
+            p1_0.deleted_by,
+            p1_0.description,
+            p1_0.description_image_url,
+            p1_0.discounted_price,
+            p1_0.is_deleted,
+            p1_0.is_hidden,
+            p1_0.is_soldout,
+            p1_0.original_price,
+            p1_0.product_image_url,
+            p1_0.product_name,
+            p1_0.rate,
+            p1_0.sale_end_time,
+            p1_0.sale_start_time,
+            p1_0.stock,
+            p1_0.updated_at,
+            p1_0.updated_by 
+        ?[34mfrom?[0m
+            tb_products p1_0 
+        ?[34mwhere?[0m
+            (
+                p1_0.is_deleted ?[34mis?[0m ?[34mfalse?[0m
+            ) 
+            ?[34mand?[0m p1_0.is_deleted=? 
+            ?[34mand?[0m p1_0.product_name ?[34mlike?[0m ? ?[34mescape?[0m ?[36m'!'?[0m 
+        ?[34morder?[0m ?[34mby?[0m
+            p1_0.created_at desc 
+        ?[34moffset?[0m
+            ? ?[34mrows?[0m 
+        ?[34mfetch?[0m
+            first ? ?[34mrows?[0m ?[34monly?[0m
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.company.Company */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_companies (address, company_name, created_at, created_by, deleted_at, deleted_by, description, is_deleted, updated_at, updated_by, user_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m company_id
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        c1_0.category_code,
+        c1_0.category_name 
+    ?[34mfrom?[0m
+        tb_categories c1_0 
+    ?[34mwhere?[0m
+        c1_0.category_code=?
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.Product */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_products (category_code, company_id, created_at, created_by, deleted_at, deleted_by, description, description_image_url, discounted_price, is_deleted, is_hidden, is_soldout, original_price, product_image_url, product_name, rate, sale_end_time, sale_start_time, stock, updated_at, updated_by) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m product_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.ProductOption */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_product_options (option_name, option_price, option_value, product_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?) 
+    ?[34mreturning?[0m option_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.company.Company */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_companies (address, company_name, created_at, created_by, deleted_at, deleted_by, description, is_deleted, updated_at, updated_by, user_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m company_id
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        c1_0.category_code,
+        c1_0.category_name 
+    ?[34mfrom?[0m
+        tb_categories c1_0 
+    ?[34mwhere?[0m
+        c1_0.category_code=?
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.Product */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_products (category_code, company_id, created_at, created_by, deleted_at, deleted_by, description, description_image_url, discounted_price, is_deleted, is_hidden, is_soldout, original_price, product_image_url, product_name, rate, sale_end_time, sale_start_time, stock, updated_at, updated_by) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m product_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.ProductOption */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_product_options (option_name, option_price, option_value, product_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?) 
+    ?[34mreturning?[0m option_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.company.Company */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_companies (address, company_name, created_at, created_by, deleted_at, deleted_by, description, is_deleted, updated_at, updated_by, user_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m company_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.Product */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_products (category_code, company_id, created_at, created_by, deleted_at, deleted_by, description, description_image_url, discounted_price, is_deleted, is_hidden, is_soldout, original_price, product_image_url, product_name, rate, sale_end_time, sale_start_time, stock, updated_at, updated_by) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m product_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.ProductOption */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_product_options (option_name, option_price, option_value, product_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?) 
+    ?[34mreturning?[0m option_id
+?[35m[Hibernate]?[0m 
+    /* ?[34mselect?[0m
+        ?[34mdistinct?[0m product 
+    ?[34mfrom?[0m
+        Product product 
+    ?[34mwhere?[0m
+        product.isDeleted = ?1 
+        ?[34mand?[0m product.company.companyName ?[34mlike?[0m ?2 ?[34mescape?[0m ?[36m'!'?[0m 
+    ?[34morder?[0m ?[34mby?[0m
+        product.createdAt desc */ ?[34mselect?[0m
+            ?[34mdistinct?[0m p1_0.product_id,
+            p1_0.category_code,
+            p1_0.company_id,
+            p1_0.created_at,
+            p1_0.created_by,
+            p1_0.deleted_at,
+            p1_0.deleted_by,
+            p1_0.description,
+            p1_0.description_image_url,
+            p1_0.discounted_price,
+            p1_0.is_deleted,
+            p1_0.is_hidden,
+            p1_0.is_soldout,
+            p1_0.original_price,
+            p1_0.product_image_url,
+            p1_0.product_name,
+            p1_0.rate,
+            p1_0.sale_end_time,
+            p1_0.sale_start_time,
+            p1_0.stock,
+            p1_0.updated_at,
+            p1_0.updated_by 
+        ?[34mfrom?[0m
+            tb_products p1_0 
+        ?[34mjoin?[0m
+            tb_companies c2_0 
+                ?[34mon?[0m c2_0.company_id=p1_0.company_id 
+                ?[34mand?[0m (c2_0.is_deleted ?[34mis?[0m ?[34mfalse?[0m) 
+        ?[34mwhere?[0m
+            (
+                p1_0.is_deleted ?[34mis?[0m ?[34mfalse?[0m
+            ) 
+            ?[34mand?[0m p1_0.is_deleted=? 
+            ?[34mand?[0m c2_0.company_name ?[34mlike?[0m ? ?[34mescape?[0m ?[36m'!'?[0m 
+        ?[34morder?[0m ?[34mby?[0m
+            p1_0.created_at desc 
+        ?[34moffset?[0m
+            ? ?[34mrows?[0m 
+        ?[34mfetch?[0m
+            first ? ?[34mrows?[0m ?[34monly?[0m
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.company.Company */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_companies (address, company_name, created_at, created_by, deleted_at, deleted_by, description, is_deleted, updated_at, updated_by, user_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m company_id
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        c1_0.category_code,
+        c1_0.category_name 
+    ?[34mfrom?[0m
+        tb_categories c1_0 
+    ?[34mwhere?[0m
+        c1_0.category_code=?
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.Product */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_products (category_code, company_id, created_at, created_by, deleted_at, deleted_by, description, description_image_url, discounted_price, is_deleted, is_hidden, is_soldout, original_price, product_image_url, product_name, rate, sale_end_time, sale_start_time, stock, updated_at, updated_by) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m product_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.ProductOption */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_product_options (option_name, option_price, option_value, product_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?) 
+    ?[34mreturning?[0m option_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.company.Company */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_companies (address, company_name, created_at, created_by, deleted_at, deleted_by, description, is_deleted, updated_at, updated_by, user_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m company_id
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        c1_0.category_code,
+        c1_0.category_name 
+    ?[34mfrom?[0m
+        tb_categories c1_0 
+    ?[34mwhere?[0m
+        c1_0.category_code=?
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.Product */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_products (category_code, company_id, created_at, created_by, deleted_at, deleted_by, description, description_image_url, discounted_price, is_deleted, is_hidden, is_soldout, original_price, product_image_url, product_name, rate, sale_end_time, sale_start_time, stock, updated_at, updated_by) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    ?[34mreturning?[0m product_id
+?[35m[Hibernate]?[0m 
+    /* ?[34minsert?[0m ?[34mfor?[0m
+        com.j1p3ter.productserver.domain.product.ProductOption */?[34minsert?[0m 
+    ?[34minto?[0m
+        tb_product_options (option_name, option_price, option_value, product_id) 
+    ?[34mvalues?[0m
+        (?, ?, ?, ?) 
+    ?[34mreturning?[0m option_id
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
