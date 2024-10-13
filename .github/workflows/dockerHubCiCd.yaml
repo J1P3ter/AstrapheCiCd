@@ -51,7 +51,7 @@ jobs:
 
       # Docker 이미지 빌드
       - name: Build Docker image
-        run: docker compose -d -f ./docker-compose.yaml up
+        run: docker compose -f ./docker-compose.yaml up -d
 
       # Docker Hub에 이미지 푸시
       - name: Push Docker image to Docker Hub
