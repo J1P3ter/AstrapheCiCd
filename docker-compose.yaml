@@ -81,6 +81,16 @@ services:
 
 
   #### CI/CD ####
+  common:
+    image: dimitry5156/astraphe/common
+    container_name: common
+    build:
+      dockerfile: Dockerfile
+      args:
+        - FILE_DIRECTORY=./common
+    networks:
+      - msa-network
+
   eureka-server:
     image: dmitry5156/astraphe/server
     container_name: eureka-server

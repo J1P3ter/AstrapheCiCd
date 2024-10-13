@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [eureka-server, gateway, user-server]
+        service: [common, eureka-server, gateway, user-server]
 
     steps:
       - name: Checkout
