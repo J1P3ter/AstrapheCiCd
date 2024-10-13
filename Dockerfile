@@ -1,9 +1,16 @@
-FROM openjdk:17-jdk-slim
+# Dockerfile
+FROM gradle:8.10.1-jdk17 AS build
+
+WORKDIR /app
 
 ARG FILE_DIRECTORY
 
-ARG JAR_FILE=${FILE_DIRECTORY}/build/libs/*SNAPSHOT.jar
+COPY $FILE_DIRECTORY /app
 
-COPY ${JAR_FILE} app.jar
+RUN gradle clean bootJar
+
+FROM openjdk:17-jdk-slim
+
+COPY --from=build /app/build/libs/*SNAPSHOT.jar ./app.jar
 
 CMD ["java", "-jar", "app.jar"]
