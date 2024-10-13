@@ -86,8 +86,8 @@ services:
     container_name: common
     build:
       dockerfile: Dockerfile
-#      args:
-#        - FILE_DIRECTORY=./common
+      args:
+        - FILE_DIRECTORY=./common
     networks:
       - msa-network
 
@@ -96,8 +96,8 @@ services:
     container_name: eureka-server
     build:
       dockerfile: Dockerfile
-#      args:
-#        - FILE_DIRECTORY=./eureka-server
+      args:
+        - FILE_DIRECTORY=./eureka-server
     networks:
       - msa-network
 
@@ -106,8 +106,8 @@ services:
     container_name: gateway
     build:
       dockerfile: Dockerfile
-#      args:
-#        - FILE_DIRECTORY=./gateway
+      args:
+        - FILE_DIRECTORY=./gateway
     ports:
       - "18080:18080"
     environment:
@@ -122,8 +122,8 @@ services:
     container_name: user-server
     build:
       dockerfile: Dockerfile
-#      args:
-#        - FILE_DIRECTORY=./user-server
+      args:
+        - FILE_DIRECTORY=./user-server
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     depends_on:
@@ -136,8 +136,8 @@ services:
     container_name: product-server
     build:
       dockerfile: Dockerfile
-#      args:
-#        - FILE_DIRECTORY=./product-server
+      args:
+        - FILE_DIRECTORY=./product-server
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     depends_on:
@@ -150,8 +150,8 @@ services:
     container_name: order-server
     build:
       dockerfile: Dockerfile
-#      args:
-#        - FILE_DIRECTORY=./order-server
+      args:
+        - FILE_DIRECTORY=./order-server
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     depends_on:
