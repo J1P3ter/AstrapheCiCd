@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   eureka-server:
-    image: dmitry5156/astraphe/server
+    image: dmitry5156/astraphe-server
     container_name: eureka-server
     build:
       dockerfile: Dockerfile
@@ -12,7 +12,7 @@ services:
       - msa-network
 
   gateway:
-    image: dmitry5156/astraphe/gateway
+    image: dmitry5156/astraphe-gateway
     container_name: gateway
     build:
       dockerfile: Dockerfile
@@ -28,7 +28,7 @@ services:
       - msa-network
 
   user-server:
-    image: dmitry5156/astraphe/user
+    image: dmitry5156/astraphe-user
     container_name: user-server
     build:
       dockerfile: Dockerfile
@@ -42,7 +42,7 @@ services:
       - msa-network
 
   product-server:
-    image: dmitry5156/astraphe/product
+    image: dmitry5156/astraphe-product
     container_name: product-server
     build:
       dockerfile: Dockerfile
@@ -56,7 +56,7 @@ services:
       - msa-network
 
   order-server:
-    image: dmitry5156/astraphe/order
+    image: dmitry5156/astraphe-order
     container_name: order-server
     build:
       dockerfile: Dockerfile
