@@ -1,23 +1,13 @@
 version: '3.9'
 
 services:
-  common:
-    image: dimitry5156/astraphe/common
-    container_name: common
-    build:
-      dockerfile: Dockerfile
-      args:
-        FILE_DIRECTORY: ./common
-    networks:
-      - msa-network
-
   eureka-server:
     image: dmitry5156/astraphe/server
     container_name: eureka-server
     build:
       dockerfile: Dockerfile
       args:
-        FILE_DIRECTORY: ./eureka-server
+        - FILE_DIRECTORY=/eureka-server
     networks:
       - msa-network
 
@@ -27,11 +17,11 @@ services:
     build:
       dockerfile: Dockerfile
       args:
-        FILE_DIRECTORY: ./gateway
+        - FILE_DIRECTORY=/gateway
     ports:
       - "18080:18080"
     environment:
-      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_PROFILES_ACTIVE=dev
     depends_on:
       - eureka-server
     networks:
@@ -43,9 +33,9 @@ services:
     build:
       dockerfile: Dockerfile
       args:
-        FILE_DIRECTORY: ./user-server
+        - FILE_DIRECTORY=/user-server
     environment:
-      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_PROFILES_ACTIVE=dev
     depends_on:
       - eureka-server
     networks:
@@ -57,7 +47,7 @@ services:
     build:
       dockerfile: Dockerfile
       args:
-        FILE_DIRECTORY: ./product-server
+        - FILE_DIRECTORY=/product-server
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     depends_on:
@@ -71,9 +61,9 @@ services:
     build:
       dockerfile: Dockerfile
       args:
-        FILE_DIRECTORY: ./order-server
+        - FILE_DIRECTORY=/order-server
     environment:
-      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_PROFILES_ACTIVE=dev
     depends_on:
       - eureka-server
     networks:
