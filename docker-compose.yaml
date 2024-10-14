@@ -35,7 +35,7 @@ services:
       args:
         - FILE_DIRECTORY=/user-server
     environment:
-      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_PROFILES_ACTIVE=prod
     depends_on:
       - eureka-server
     networks:
