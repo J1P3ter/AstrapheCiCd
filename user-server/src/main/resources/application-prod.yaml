@@ -1,11 +1,11 @@
 spring:
   config:
     activate:
-      on-profile: dev
+      on-profile: prod
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: 1234
+    url: jdbc:postgresql://${POSTGRESQL_HOST}:${POSTGRESQL_PORT}/postgres
+    username: ${POSTGRESQL_ID}
+    password: ${POSTGRESQL_PASS}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -20,3 +20,11 @@ spring:
       port: 6379
       username: default
       password: systempass
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka/
+
+server:
+  host: ${SERVER_HOST}
